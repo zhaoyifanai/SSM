@@ -1,0 +1,13 @@
+spring\service\impl\UserServiceImpl.class
+spring\service\UserService.class
+spring\demo\MyApp.class
+spring\demo\MyBeanIAD.class
+spring\demo\MyPrototypeBean.class
+spring\dao\impl\UserDaoImpl.class
+spring\demo\MyInject.class
+spring\demo\MyBean.class
+spring\demo\MyBeanIB.class
+spring\controller\UserController.class
+spring\dao\UserDao.class
+spring\demo\MyBeanConfig.class
+spring\demo\MyConfig.class

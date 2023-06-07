@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <bean id="Factory" class="spring.pojo.InstanceStuFactory"></bean>
+    <bean id="student2" factory-bean="Factory" factory-method="getStudent">
+        <constructor-arg value="student3"></constructor-arg>
+    </bean>
+
+    <bean id="student1" class="spring.pojo.staticStuFactory" factory-method="getStudent">
+        <constructor-arg value="student1"></constructor-arg>
+    </bean>
+
+
+    <bean id="studentOne" class="spring.pojo.Student"></bean>
+
+    <bean id="studentTwo" class="spring.pojo.Student" >
+        <!-- property标签：通过组件类的setXxx()方法给组件对象设置属性 -->
+        <!-- name属性：指定属性名（这个属性名是getXxx()、setXxx()方法定义的，和成员变量无关）-->
+        <!-- value属性：指定属性值 -->
+        <property name="sid" value="1001"></property>
+        <property name="sname" value="张三"></property>
+        <property name="age" value="23"></property>
+        <property name="gender" value="男"></property>
+    </bean>
+
+    <bean id="studentThree" class="spring.pojo.Student">
+        <constructor-arg value="1002"></constructor-arg>
+        <constructor-arg value="李四"></constructor-arg>
+        <constructor-arg value="女"></constructor-arg>
+        <constructor-arg value="24" name="age"></constructor-arg>
+
+    </bean>
+
+    <!--<bean id="studentFour" class="spring.pojo.Student">
+        <property name="sid" value="1001"></property>
+        &lt;!&ndash;<property name="sname" value="&lt;王五&gt;"></property>&ndash;&gt;
+
+        &lt;!&ndash; 解决方案二：使用CDATA节 &ndash;&gt;
+        &lt;!&ndash; CDATA中的C代表Character，是文本、字符的含义，CDATA就表示纯文本数据 &ndash;&gt;
+        &lt;!&ndash; XML解析器看到CDATA节就知道这里是纯文本，就不会当作XML标签或属性来解析 &ndash;&gt;
+        &lt;!&ndash; 所以CDATA节中写什么符号都随意 &ndash;&gt;
+        <property name="sname">
+            <value><![CDATA[<王五>]]></value>
+        </property>
+        <property name="gender">
+            <null/>
+        </property>
+        <property name="age" value="23"></property>
+
+
+    </bean>
+
+    <bean id="studentFive" class="spring.pojo.Student">
+        <property name="sid" value="1004"></property>
+        <property name="sname" value="赵六"></property>
+        <property name="age" value="26"></property>
+        <property name="gender" value="男"></property>
+        &lt;!&ndash; ref属性：引用IOC容器中某个bean的id，将所对应的bean为属性赋值 &ndash;&gt;
+        &lt;!&ndash;<property name="clazz" ref="clazzOne"></property>&ndash;&gt;
+        &lt;!&ndash;级联属性赋值&ndash;&gt;
+        &lt;!&ndash; 一定先引用某个bean为属性赋值，才可以使用级联方式更新属性 &ndash;&gt;
+        &lt;!&ndash;<property name="clazz.cid" value="2222"></property>
+        <property name="clazz.cname" value="远大前程班"></property>&ndash;&gt;
+
+        <property name="clazz">
+            &lt;!&ndash; 在一个bean中再声明一个bean就是内部bean &ndash;&gt;
+            &lt;!&ndash; 内部bean只能用于给属性赋值，不能在外部通过IOC容器获取，因此可以省略id属性 &ndash;&gt;
+            <bean id="clazzInner" class="spring.pojo.Clazz">
+                <property name="cid" value="22222"></property>
+                <property name="cname" value="远大前程班"></property>
+            </bean>
+        </property>
+
+        <property name="hobbies">
+            <array>
+                <value>抽烟</value>
+                <value>喝酒</value>
+                <value>烫头</value>
+            </array>
+        </property>
+
+        <property name="teacherMap" ref="teacherMap"></property>
+
+        &lt;!&ndash;<property name="teacherMap">
+            <map>
+                <entry key="101" value-ref="teacherOne"></entry>
+                <entry key="102" value-ref="teacherTwo"></entry>
+            </map>
+        </property>&ndash;&gt;
+    </bean>
+
+    <bean id="clazzOne" class="spring.pojo.Clazz">
+        <property name="cid" value="11111"></property>
+        <property name="cname" value="最强王者班"></property>
+        <property name="students" ref="studentList"></property>
+        &lt;!&ndash;<property name="students">
+            <list>
+                <ref bean="studentTwo"></ref>
+                <ref bean="studentThree"></ref>
+                <ref bean="studentFive"></ref>
+            </list>
+        </property>&ndash;&gt;
+    </bean>
+
+    &lt;!&ndash;配置一个集合类型的bean，需要使用util的约束&ndash;&gt;
+    <util:list id="studentList">
+        <ref bean="studentTwo"></ref>
+        <ref bean="studentThree"></ref>
+        <ref bean="studentFive"></ref>
+    </util:list>
+
+    &lt;!&ndash;map集合类型的bean&ndash;&gt;
+    <util:map id="teacherMap">
+        <entry key="101" value-ref="teacherOne"></entry>
+        <entry key="102" value-ref="teacherTwo"></entry>
+    </util:map>
+
+    <bean id="teacherOne" class="spring.pojo.Teacher">
+        <property name="tid" value="101"></property>
+        <property name="tname" value="大宝"></property>
+    </bean>
+
+    <bean id="teacherTwo" class="spring.pojo.Teacher">
+        <property name="tid" value="102"></property>
+        <property name="tname" value="小宝"></property>
+    </bean>
+
+    <bean id="studentSix" class="spring.pojo.Student"
+          p:sid="1005" p:sname="小明" p:teacherMap-ref="teacherMap"></bean>-->
+
+</beans>

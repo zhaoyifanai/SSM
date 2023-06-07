@@ -1,0 +1,5 @@
+spring\test\TxByAnnotationTest.class
+spring\test\AccountTest.class
+spring\test\TxByXMLTest.class
+spring\test\AccountJDBCTemplateTest.class
+spring\test\JdbcTemplateTest.class
