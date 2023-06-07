@@ -1,0 +1,6 @@
+spring\test\AutuwireByXmlTest.class
+spring\test\IOCByXMLTest.class
+spring\test\ScopeTest.class
+spring\test\FactoryBeanTest.class
+spring\test\LifeCycleTest.class
+spring\test\DataSourceTest.class

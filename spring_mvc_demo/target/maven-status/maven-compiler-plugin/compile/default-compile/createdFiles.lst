@@ -1,0 +1,7 @@
+springmvc\controller\TestRequestMappingController.class
+springmvc\controller\TestViewController.class
+springmvc\controller\ProtalController.class
+springmvc\controller\DemoController.class
+springmvc\controller\TestScopeController.class
+springmvc\controller\TestParamController.class
+springmvc\pojo\User.class

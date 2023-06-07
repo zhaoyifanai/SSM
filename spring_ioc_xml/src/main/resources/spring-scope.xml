@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    scope:设置bean的作用域
+    singleton（默认）：在IOC容器中，这个bean的对象始终为单实例 | IOC容器初始化时
+    prototype      ：这个bean在IOC容器中有多个实例           | 获取bean时
+    -->
+    <bean id="student" class="spring.pojo.Student" scope="prototype">
+        <property name="sid" value="1001"></property>
+        <property name="sname" value="张三"></property>
+    </bean>
+</beans>

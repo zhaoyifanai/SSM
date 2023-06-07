@@ -1,0 +1,13 @@
+spring\pojo\InstanceStuFactory.class
+spring\service\impl\UserServiceImpl.class
+spring\service\UserService.class
+spring\pojo\Clazz.class
+spring\pojo\Teacher.class
+spring\dao\impl\UserDaoImpl.class
+spring\controller\UserController.class
+spring\dao\UserDao.class
+spring\factory\UserFactoryBean.class
+spring\pojo\User.class
+spring\process\MyBeanPostProcessor.class
+spring\pojo\staticStuFactory.class
+spring\pojo\Student.class
